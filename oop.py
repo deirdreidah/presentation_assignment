@@ -21,7 +21,7 @@ my_car.start_engine()
 # Print the account balance.
 
 class BankAccount:
-    def _init_(self, account_number, initial_balance=0):
+    def __init__(self, account_number, initial_balance=0):
         self.account_number = account_number
         self.balance = initial_balance
 
@@ -30,23 +30,23 @@ class BankAccount:
             print("Deposit amount must be positive.")
             return
         self.balance += amount
-        print(f"Deposited ${amount:.2f} to account {self.account_number}. New balance: ${self.balance:.2f}")
+        print(f"Deposited {amount} to account {self.account_number}. New balance: {self.balance}")
 
     def withdraw(self, amount):
         if amount <= 0:
             print("Withdrawal amount must be positive.")
             return
         if amount > self.balance:
-            print(f"Insufficient balance to withdraw ${amount:.2f} from account {self.account_number}.")
+            print(f"Insufficient balance to withdraw {amount} from account {self.account_number}.")
         else:
             self.balance -= amount
-            print(f"Withdrew ${amount:.2f} from account {self.account_number}. New balance: ${self.balance:.2f}")
+            print(f"Withdrew {amount} from account {self.account_number}. New balance: {self.balance}")
 
     def print_balance(self):
-        print(f"Account {self.account_number} balance: ${self.balance:.2f}")
+        print(f"Account {self.account_number} balance: {self.balance}")
 
 
-account = BankAccount("12345678", initial_balance=500)
+account = BankAccount("12345698", initial_balance=500)
 account.deposit(200)
 account.print_balance()
 account.withdraw(100)
@@ -70,7 +70,7 @@ account.withdraw(-100)
 
 
 class Book:
-    def _init_(self, title, author):
+    def __init__(self, title, author):
         self.title = title
         self.author = author
         self.is_available = True
@@ -80,7 +80,7 @@ class Book:
 
 
 class Library:
-    def _init_(self):
+    def __init__(self):
         self.books = []
 
     def add_book(self, title, author):
@@ -89,7 +89,6 @@ class Library:
         print(f"Book '{title}' by {author} added to the library.")
 
     def remove_book(self, title):
-        """Remove a book from the library."""
         for book in self.books:
             if book.title.lower() == title.lower():
                 self.books.remove(book)
@@ -135,15 +134,14 @@ class Library:
 
 
 library = Library()
-library.add_book("To Kill a Mockingbird", "Harper Lee")
-library.add_book("1984", "George Orwell")
-library.list_books()
+library.add_book("King of Wrath", "Ana Huang")
+library.add_book("2022", "Coleen Hoover")
 print("\n")
 
-library.check_availability("1984")
-library.borrow_book("1984")
-library.check_availability("1984")
-library.return_book("1984")
-library.remove_book("To Kill a Mockingbird")
-library.list_books()
+library.check_availability("2022")
+library.borrow_book("2022")
+library.check_availability("2022")
+library.return_book("2022")
+library.remove_book("King of Wrath")
+
 
